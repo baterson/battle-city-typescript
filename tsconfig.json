@@ -1,0 +1,9 @@
+{
+	"compilerOptions": {
+		"outDir": "./build",
+		"sourceMap": true,
+		"noImplicitAny": false,
+		"target": "es2018",
+		"moduleResolution": "node"
+	}
+}

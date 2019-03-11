@@ -1,0 +1,38 @@
+{
+	"name": "battle-city-typescript",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"homepage": "https://baterson.github.io/battle-city-typescript",
+	"scripts": {
+		"start": "webpack-dev-server",
+		"build": "tsc && webpack build/index.js -o build/bundle.js --mode=production",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/baterson/battle-city-typescript"
+	},
+	"author": "https://github.com/baterson",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/baterson/issues"
+	},
+	"dependencies": {
+		"@types/node": "^10.12.0"
+	},
+	"devDependencies": {
+		"gh-pages": "^2.0.1",
+		"file-loader": "^2.0.0",
+		"html-webpack-plugin": "^3.2.0",
+		"image-webpack-loader": "^4.4.0",
+		"img-loader": "^3.0.0",
+		"ts-loader": "^5.0.0",
+		"typescript": "^3.2.2",
+		"url-loader": "^1.1.2",
+		"webpack": "^4.17.2",
+		"webpack-cli": "^3.1.0",
+		"webpack-dev-server": "^3.1.8"
+	}
+}
