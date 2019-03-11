@@ -11,8 +11,10 @@ import { assetsHolder } from './utils/assetsHolder';
 import { keyboard } from './keyboard';
 import { Game } from './Game';
 async function main() {
-    await assetsHolder.loadSprite(sprite);
-    assetsHolder.loadAudio({ explode, hit, hitdmg, neutral, powerup, move, start, gameover });
+    await Promise.all([
+        assetsHolder.loadSprite(sprite),
+        assetsHolder.loadAudio({ explode, hit, hitdmg, neutral, powerup, move, start, gameover }),
+    ]);
     const game = new Game();
     keyboard.listenToEvents(game);
     return game.createLoop();

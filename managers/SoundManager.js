@@ -6,11 +6,11 @@ export class SoundManager {
     setupTracks(trackNames) {
         this.tracks = trackNames.reduce((acc, track) => {
             if (typeof track === 'string') {
-                acc[track] = new Audio(assetsHolder.audio[track]);
+                acc[track] = assetsHolder.audio[track].cloneNode();
             }
             else {
                 const { trackName, loop } = track;
-                acc[trackName] = new Audio(assetsHolder.audio[trackName]);
+                acc[trackName] = assetsHolder.audio[trackName].cloneNode();
                 acc[trackName].loop = loop;
             }
             return acc;

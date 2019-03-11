@@ -129,17 +129,26 @@ class AssetsHolder {
     loadSprite(src) {
         return new Promise((resolve, reject) => {
             const image = new Image();
+            image.src = src;
             image.addEventListener('load', () => {
                 this.image = image;
                 this.sprites = setupSprites(image);
                 this.variableSprites = setupVariableSprites(image);
                 resolve();
             });
-            image.src = src;
         });
     }
-    loadAudio(audio) {
-        this.audio = audio;
+    loadAudio(audioSrc) {
+        this.audio = {};
+        const loaders = Object.keys(audioSrc).map(trackName => new Promise((resolve, reject) => {
+            const audio = new Audio();
+            audio.src = audioSrc[trackName];
+            audio.addEventListener('canplaythrough', () => {
+                this.audio[trackName] = audio;
+                resolve();
+            });
+        }));
+        return Promise.all(loaders);
     }
 }
 export const assetsHolder = new AssetsHolder();
