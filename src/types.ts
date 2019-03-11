@@ -117,9 +117,8 @@ export interface VariableSprites {
 
 export type TrackNames = 'explode' | 'hit' | 'hitdmg' | 'neutral' | 'powerup' | 'move' | 'start' | 'gameover';
 
-export type AudioSrc = { [key in TrackNames]: string };
+export type Audio = { [key in TrackNames]: HTMLAudioElement };
 
 // Map
-
 export type RawTiles = number[][];
 export type Tile = { type: Tiles; position: Vector };

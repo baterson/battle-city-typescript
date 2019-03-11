@@ -7,7 +7,8 @@ import {
 	Sprites,
 	VariableSprites,
 	Tiles,
-	AudioSrc,
+	TrackNames,
+	Audio,
 	Vector,
 } from '../types';
 
@@ -148,25 +149,37 @@ const setupVariableSprites = (image: HTMLImageElement): VariableSprites => {
 
 class AssetsHolder {
 	image: HTMLImageElement;
-	audio: AudioSrc;
+	audio: Audio;
 	sprites: Sprites;
 	variableSprites: VariableSprites;
 
 	loadSprite(src: string) {
 		return new Promise((resolve, reject) => {
-			const image: any = new Image();
+			const image = new Image();
+			image.src = src;
 			image.addEventListener('load', () => {
 				this.image = image;
 				this.sprites = setupSprites(image);
 				this.variableSprites = setupVariableSprites(image);
 				resolve();
 			});
-			image.src = src;
 		});
 	}
 
-	loadAudio(audio: AudioSrc) {
-		this.audio = audio;
+	loadAudio(audioSrc: { [key in TrackNames]: string }) {
+		this.audio = {} as any;
+		const loaders = Object.keys(audioSrc).map(
+			trackName =>
+				new Promise((resolve, reject) => {
+					const audio = new Audio();
+					audio.src = audioSrc[trackName];
+					audio.addEventListener('canplaythrough', () => {
+						this.audio[trackName] = audio;
+						resolve();
+					});
+				})
+		);
+		return Promise.all(loaders);
 	}
 }
 
