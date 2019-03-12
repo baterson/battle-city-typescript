@@ -148,10 +148,25 @@ const setupVariableSprites = (image: HTMLImageElement): VariableSprites => {
 };
 
 class AssetsHolder {
+	prelaoderState = {
+		persentage: 0,
+		isRunning: true,
+	};
 	image: HTMLImageElement;
 	audio: Audio;
 	sprites: Sprites;
 	variableSprites: VariableSprites;
+
+	runPreloader() {
+		if (this.prelaoderState.isRunning) {
+			main.showPreloader(this.prelaoderState.persentage);
+			return requestAnimationFrame(this.runPreloader.bind(this));
+		}
+	}
+
+	stopPreloader() {
+		this.prelaoderState.isRunning = false;
+	}
 
 	loadSprite(src: string) {
 		return new Promise((resolve, reject) => {
@@ -168,13 +183,16 @@ class AssetsHolder {
 
 	loadAudio(audioSrc: { [key in TrackNames]: string }) {
 		this.audio = {} as any;
-		const loaders = Object.keys(audioSrc).map(
+		const trackNames = Object.keys(audioSrc);
+		const chunk = Math.floor(100 / trackNames.length);
+		const loaders = trackNames.map(
 			trackName =>
 				new Promise((resolve, reject) => {
 					const audio = new Audio();
 					audio.src = audioSrc[trackName];
 					audio.addEventListener('canplaythrough', () => {
 						this.audio[trackName] = audio;
+						this.prelaoderState.persentage += chunk;
 						resolve();
 					});
 				})

@@ -39,4 +39,9 @@ export const main = {
 		assetsHolder.sprites.logo({ x: 100, y: 200 }, { x: 400, y: 200 });
 		context.strokeText('Press any key', 300, 500);
 	},
+
+	showPreloader(percentage) {
+		this.clearScreen();
+		context.strokeText(`Loading...${percentage}`, 300, 300);
+	},
 };

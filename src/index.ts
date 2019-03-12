@@ -12,10 +12,12 @@ import { keyboard } from './keyboard';
 import { Game } from './Game';
 
 async function main() {
+	assetsHolder.runPreloader();
 	await Promise.all([
 		assetsHolder.loadSprite(sprite),
 		assetsHolder.loadAudio({ explode, hit, hitdmg, neutral, powerup, move, start, gameover }),
 	]);
+	assetsHolder.stopPreloader();
 
 	const game = new Game();
 	keyboard.listenToEvents(game);
