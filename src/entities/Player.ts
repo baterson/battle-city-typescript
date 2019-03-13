@@ -75,7 +75,12 @@ export class Player extends Tank {
 		if (spawn) {
 			return animateVariableSprites(this.position, assetsHolder.variableSprites.tankSpawn, SPAWN_FRAMES, spawn);
 		} else if (death) {
-			return animateVariableSprites(this.position, assetsHolder.variableSprites.tankDestruction, DEATH_FRAMES, death);
+			return animateVariableSprites(
+				this.position,
+				assetsHolder.variableSprites.tankDestruction,
+				DEATH_FRAMES,
+				death
+			);
 		} else if (invincible) {
 			const invincibleSprites = assetsHolder.sprites.invincible;
 			const index = invincible % invincibleSprites.length;

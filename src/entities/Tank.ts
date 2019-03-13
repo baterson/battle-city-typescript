@@ -39,20 +39,31 @@ export class Tank extends Movable {
 	forgiveCollision(tile: Tile): Vector | undefined {
 		const [point1, point2] = this.getFrontCollisionPoints();
 		const tilePos = tile.position;
+		let diff: number,
+			destination = { x: this.prevPosition.x, y: this.prevPosition.y };
 
 		if (this.direction === Direction.Top || this.direction === Direction.Bottom) {
-			const diffPoint = Math.min(Math.abs(tilePos.x - point1.x), Math.abs(tilePos.x - point2.x));
-			if (diffPoint > 0 && diffPoint < 5) {
-				const destination = this.position.x > tilePos.x ? tilePos.x + TILE_SIDE : tilePos.x - this.size.x;
-				return { x: destination, y: this.prevPosition.y };
+			if (tilePos.x > point1.x) {
+				diff = tilePos.x - point2.x;
+				destination.x = tilePos.x - this.size.x;
+			} else {
+				diff = tilePos.x + TILE_SIDE - point1.x;
+				destination.x = tilePos.x + TILE_SIDE;
 			}
 		} else if (this.direction === Direction.Left || this.direction === Direction.Right) {
-			const diffPoint = Math.min(Math.abs(tilePos.y - point1.y), Math.abs(tilePos.y - point2.y));
-			if (diffPoint > 0 && diffPoint < 5) {
-				const destination = this.position.y > tilePos.y ? tilePos.y + TILE_SIDE : tilePos.y - this.size.y;
-				return { x: this.prevPosition.x, y: destination };
+			if (tilePos.y > point1.y) {
+				diff = tilePos.y - point2.y;
+				destination.y = tilePos.y - this.size.y;
+			} else {
+				diff = tilePos.y + TILE_SIDE - point1.y;
+				destination.y = tilePos.y + TILE_SIDE;
 			}
 		}
+
+		if (Math.abs(diff) < 5) {
+			return destination;
+		}
+
 		return;
 	}
 }
