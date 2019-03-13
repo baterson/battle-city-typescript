@@ -1,6 +1,6 @@
 # battle-city-typescript
 
-Simplified version of the NES "Battle City" on plain JS  
+Simplified version of the NES "Battle City" built on plain JS  
 Play at https://baterson.github.io/battle-city-typescript/
 
 Controls:  
