@@ -76,7 +76,6 @@ export class Enemy extends Tank {
     resolveEdgeCollision() {
         this.goBack();
         this.setRandomDirection();
-        // this.setOpositeDirection();
     }
     resolveTileCollision(tiles) {
         if (tiles.length === 1) {
