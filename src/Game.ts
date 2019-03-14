@@ -49,7 +49,7 @@ export class Game {
 		const player = entityManager.getPlayer();
 		const flag = entityManager.getFlag();
 		if (!player || flag.isDestroyed) {
-			if (player) player.soundManager.pauseAll();
+			entityManager.clear();
 			return this.gameOver();
 		}
 		if (this.stage.isFinish()) {
