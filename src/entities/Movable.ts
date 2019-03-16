@@ -3,8 +3,12 @@ import { DELTA_TIME } from '../constants';
 import { TileMap } from '../TileMap';
 import { Direction, Sprite, Vector, Tile } from '../types';
 
+/*
+Base class for all movable entities
+*/
 export class Movable extends Entity {
 	direction: Direction;
+	// the position of the previous frame in case of collisions
 	prevPosition: Vector;
 
 	constructor(position: Vector, size: Vector, direction: Direction) {
@@ -13,12 +17,21 @@ export class Movable extends Entity {
 		this.prevPosition = { ...position };
 	}
 
+	/*
+	Called when entity collides with the canvas edge 
+	*/
 	resolveEdgeCollision() {}
 
+	/*
+	Called when entity collides with a tyle of rigid category
+	*/
 	resolveTileCollision(tiles: Tile[], tileMap: TileMap) {}
 
 	resolveEntityCollision(other) {}
 
+	/*
+	Move entity by direction and velocity value
+	*/
 	move(velocity: number): void {
 		this.prevPosition = { ...this.position };
 
@@ -37,6 +50,9 @@ export class Movable extends Entity {
 		this.position = { ...this.prevPosition };
 	}
 
+	/*
+	Animate entity movement by direction
+	*/
 	animateMovement(sprites: Sprite[]): void {
 		let distance;
 		if (this.direction === Direction.Left || this.direction === Direction.Right) {
@@ -53,6 +69,9 @@ export class Movable extends Entity {
 		return box.y1 < 0 || box.y2 > 600 || box.x1 < 0 || box.x2 > 600;
 	}
 
+	/*
+	Returns vectors of the entity front edges depend on the direction
+	*/
 	getFrontCollisionPoints(): Vector[] {
 		const { x1, x2, y1, y2 } = this.getBoundingBox();
 		if (this.direction === Direction.Top) {

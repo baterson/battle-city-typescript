@@ -14,9 +14,13 @@ function powerupObserver(this: Enemy, powerupType) {
 	}
 }
 
+/*
+Class describes all enemy tanks 
+*/
 export class Enemy extends Tank {
 	type: TankTypes;
 	lives: number;
+	// sets when entity changes the direction
 	prevTile: Vector;
 	timeManager: TimeManager<'spawn' | 'death' | 'freeze' | 'shotCD'>;
 	soundManager: SoundManager<'explode'>;
@@ -75,6 +79,9 @@ export class Enemy extends Tank {
 		}
 	}
 
+	/*
+	Entity changes the direction to random after moving some distance by the x or y coordinates 
+	*/
 	aiMove() {
 		const { velocity } = ENEMY_STATS[this.type];
 		if (
@@ -147,6 +154,9 @@ export class Enemy extends Tank {
 		}
 	}
 
+	/*
+	Checks the position before spawning. If the spot is taken then restarts spawn timer
+	*/
 	isSpawnSpotClear() {
 		return entityManager.entities
 			.filter(entity => entity.id !== this.id && !isBullet(entity))

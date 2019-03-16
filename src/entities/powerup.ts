@@ -5,6 +5,9 @@ import { SoundManager, entityManager, TimeManager } from '../managers';
 import { assetsHolder } from '../utils';
 import { isPlayer } from './guards';
 
+/*
+Store all observers who want to know when powerup picked by the player
+*/
 export class PowerupEvents {
 	public observers: { [key: number]: (eventType: PowerupTypes) => void } = {};
 

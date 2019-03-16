@@ -2,8 +2,10 @@ import { Tiles, Layers, RawTiles, Tile, Vector } from './types';
 import { TILE_SIDE } from './constants';
 import { assetsHolder } from './utils';
 
+// collidable tiles
 export const rigid = [Tiles.Brick1, Tiles.Brick2, Tiles.Brick3, Tiles.Brick4, Tiles.Steel, Tiles.Water];
 
+// tiles which not collides with the bullet entity
 export const bulletThrough = [Tiles.Grass, Tiles.Water, Tiles.None];
 
 const layesrMap = {
@@ -12,6 +14,9 @@ const layesrMap = {
 	[Layers.over]: [Tiles.Grass],
 };
 
+/*
+Provides interface for interaction with tiles
+*/
 export class TileMap {
 	tiles: RawTiles;
 
@@ -31,6 +36,9 @@ export class TileMap {
 		return { type: this.tiles[yIndex][xIndex], position: { x: xIndex * TILE_SIDE, y: yIndex * TILE_SIDE } };
 	}
 
+	/*
+	Returns tiles between two vectors
+	*/
 	lookupRange(point1: Vector, point2: Vector): Tile[] {
 		let inBetweenPoints = [];
 		const rangeX = Math.abs(point1.x - point2.x);
@@ -49,7 +57,10 @@ export class TileMap {
 		this.tiles.forEach((row, y) => {
 			row.forEach((tile, x) => {
 				if (!layesrMap[name].includes(tile)) return;
-				assetsHolder.sprites.tiles[tile]({ x: x * TILE_SIDE, y: y * TILE_SIDE }, { x: TILE_SIDE, y: TILE_SIDE });
+				assetsHolder.sprites.tiles[tile](
+					{ x: x * TILE_SIDE, y: y * TILE_SIDE },
+					{ x: TILE_SIDE, y: TILE_SIDE }
+				);
 			});
 		});
 	}

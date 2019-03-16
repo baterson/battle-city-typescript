@@ -147,6 +147,9 @@ const setupVariableSprites = (image: HTMLImageElement): VariableSprites => {
 	};
 };
 
+/*
+Provides all assets for the game
+*/
 class AssetsHolder {
 	prelaoderState = {
 		persentage: 0,

@@ -1,5 +1,5 @@
 import { Entities } from '../types';
-import { Player, Enemy, Powerup, Flag, Tank, Movable, Bullet } from './';
+import { Player, Enemy, Powerup, Flag, Tank, Bullet } from './';
 
 export function isTank(entity: Entities): entity is Tank {
 	return entity instanceof Tank;

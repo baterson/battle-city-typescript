@@ -6,6 +6,10 @@ import { TileMap, rigid } from '../TileMap';
 import { isPlayer, isEnemy, isTank, isFlag, isPowerup } from '../entities/guards';
 import { TILE_SIDE } from '../constants';
 
+/*
+Store all entities
+Calculates collisions between them
+*/
 export class EntityManager {
 	pool: { [key: number]: Entities };
 	toRemoveQueue: Set<number>;
@@ -29,6 +33,9 @@ export class EntityManager {
 		this.toRemoveQueue.add(id);
 	};
 
+	/*
+	Called on the of the frame. Delete all entities which death animation is over from the toRemoveQueue
+	*/
 	removeFromQueue = () => {
 		this.toRemoveQueue.forEach(entityId => {
 			const entity = this.pool[entityId];
@@ -61,6 +68,9 @@ export class EntityManager {
 		this.entities.forEach(entity => entity.update());
 	}
 
+	/*
+	Calculate collisions for all movable entities
+	*/
 	checkCollisions(tileMap: TileMap) {
 		const seen = new Set();
 		this.entities.forEach(entity => {
@@ -106,6 +116,9 @@ export class EntityManager {
 		});
 	}
 
+	/*
+	Removes all entities from the pool
+	*/
 	clear(clearPlayer = true) {
 		if (!clearPlayer) {
 			const player = this.getPlayer();

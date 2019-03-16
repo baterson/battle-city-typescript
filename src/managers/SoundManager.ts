@@ -1,6 +1,9 @@
 import { assetsHolder } from '../utils';
 import { TrackNames } from '../types';
 
+/*
+Store references to audio assets and provides the interface to interact with them.
+*/
 export class SoundManager<T extends TrackNames> {
 	tracks: { [key in T]?: HTMLAudioElement };
 

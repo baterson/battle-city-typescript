@@ -4,6 +4,9 @@ import { TimeManager, SoundManager, entityManager } from './managers';
 import { randomInt } from './utils';
 import { TileMap } from './TileMap';
 
+/*
+Represent stage of the game with information of available enemies, powerups and map reference 
+*/
 export class Stage {
 	number: number;
 	map: TileMap;
@@ -51,7 +54,10 @@ export class Stage {
 		if (powerupSpawnCD || !this.powerupsAvailable) return;
 
 		const index = randomInt(Object.keys(PowerupTypes).length / 2);
-		entityManager.spawnEntity('Powerup', PowerupTypes[PowerupTypes[index]], { x: randomInt(500), y: randomInt(500) });
+		entityManager.spawnEntity('Powerup', PowerupTypes[PowerupTypes[index]], {
+			x: randomInt(500),
+			y: randomInt(500),
+		});
 		this.timeManager.setTimer('powerupSpawnCD', POWERUP_SPAWN_CD);
 		this.powerupsAvailable -= 1;
 	}

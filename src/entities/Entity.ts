@@ -1,5 +1,8 @@
 import { BoundingBox, Vector } from '../types';
 
+/*
+Base Entity. All entities derives from this class.  
+*/
 export class Entity {
 	static numberGen: number = 0;
 	id: number;
@@ -13,8 +16,14 @@ export class Entity {
 		Entity.numberGen += 1;
 	}
 
+	/*
+	Called every frame. Update entity state 
+	*/
 	update() {}
 
+	/*
+	Called when possible by the game loop. Render entity sprites
+	*/
 	render() {}
 
 	resolveEntityCollision(other) {}
@@ -31,5 +40,8 @@ export class Entity {
 		};
 	}
 
+	/*
+	Called before deleting entity from the pool
+	*/
 	deconstruct() {}
 }

@@ -3,6 +3,9 @@ import { BULLET_SIZE, DEATH_FRAMES, TILE_SIDE } from '../constants';
 import { TimeManager, SoundManager, entityManager } from '../managers';
 import { Direction, Vector, Tile } from '../types';
 
+/*
+Base class for all tanks (Player/Enemy)
+*/
 export class Tank extends Movable {
 	public timeManager: TimeManager<'spawn' | 'death' | 'shotCD'>;
 	public soundManager: SoundManager<'explode'>;
@@ -11,6 +14,9 @@ export class Tank extends Movable {
 		super(position, size, direction);
 	}
 
+	/*
+	Set shotCD timer to the entity and creates the Bullet entity
+	*/
 	shot(cd: number) {
 		const shotCD = this.timeManager.getTimer('shotCD');
 		if (shotCD) return;
@@ -36,6 +42,10 @@ export class Tank extends Movable {
 		entityManager.toRemove(this.id);
 	}
 
+	/*
+	Calculates position ot the entity and a tile. 
+	If the difference between collisionPoints of entity and tile is the allowable size, the computes new position for the entity.
+	*/
 	forgiveCollision(tile: Tile): Vector | undefined {
 		const [point1, point2] = this.getFrontCollisionPoints();
 		const tilePos = tile.position;
