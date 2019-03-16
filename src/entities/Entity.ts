@@ -41,7 +41,7 @@ export class Entity {
 	}
 
 	/*
-	Called before deleting entity from the pool
+	Called before entity deletes from the pool
 	*/
 	deconstruct() {}
 }
