@@ -5,10 +5,10 @@
 	"main": "index.js",
 	"homepage": "https://baterson.github.io/battle-city-typescript",
 	"scripts": {
-		"start": "webpack-dev-server",
-		"build": "tsc && webpack build/index.js -o build/bundle.js --mode=production",
+		"build": "webpack -p",
+		"start": "webpack-dev-server -d --content-base ./public",
 		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build"
+		"deploy": "gh-pages -d public"
 	},
 	"repository": {
 		"type": "git",
@@ -23,9 +23,8 @@
 		"@types/node": "^10.12.0"
 	},
 	"devDependencies": {
-		"gh-pages": "^2.0.1",
 		"file-loader": "^2.0.0",
-		"html-webpack-plugin": "^3.2.0",
+		"gh-pages": "^2.0.1",
 		"image-webpack-loader": "^4.4.0",
 		"img-loader": "^3.0.0",
 		"ts-loader": "^5.0.0",

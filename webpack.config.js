@@ -1,10 +1,9 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 module.exports = {
 	devtool: 'inline-source-map',
 	entry: './src/index.ts',
 	output: {
-		filename: 'bundle.js',
+		path: __dirname + '/public',
+		filename: 'build/bundle.js',
 	},
 	module: {
 		rules: [
@@ -20,18 +19,25 @@ module.exports = {
 						loader: 'url-loader',
 						options: {
 							limit: 4000,
+							outputPath: 'build',
 						},
 					},
 				],
 			},
 			{
-				test: /\.wav$/,
-				use: 'file-loader',
+				test: /\.flac$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							outputPath: 'build',
+						},
+					},
+				],
 			},
 		],
 	},
 	resolve: {
 		extensions: ['.ts', '.js'],
 	},
-	plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
 };

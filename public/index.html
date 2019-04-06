@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			#root {
+				background-color: rgb(41, 36, 36);
+				/* margin: 50px; */
+				image-rendering: pixelated;
+				z-index: 1;
+				position: absolute;
+				top: 50px;
+				left: 50px;
+			}
+			#dashboard {
+				background-color: #636363;
+				image-rendering: pixelated;
+				z-index: 0;
+			}
+			#container {
+				position: relative;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container">
+			<canvas id="dashboard" width="750" height="700"></canvas>
+			<canvas id="root" width="600" height="600"></canvas>
+		</div>
+		<script src="./build/bundle.js"></script>
+	</body>
+</html>
