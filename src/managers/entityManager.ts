@@ -7,7 +7,7 @@ import { isPlayer, isEnemy, isTank, isFlag, isPowerup } from '../entities/guards
 import { TILE_SIDE } from '../constants';
 
 /*
-Store all entities
+Stores all entities
 Calculates collisions between them
 */
 export class EntityManager {
@@ -34,7 +34,7 @@ export class EntityManager {
 	};
 
 	/*
-	Called on the of the frame. Delete all entities which death animation is over from the toRemoveQueue
+	Called at the end of the frame. Delete all entities which death animation is over from the toRemoveQueue
 	*/
 	removeFromQueue = () => {
 		this.toRemoveQueue.forEach(entityId => {
@@ -69,7 +69,7 @@ export class EntityManager {
 	}
 
 	/*
-	Calculate collisions for all movable entities
+	Calculates collisions for all movable entities
 	*/
 	checkCollisions(tileMap: TileMap) {
 		const seen = new Set();

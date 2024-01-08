@@ -1,8 +1,19 @@
-# battle-city-typescript
+# Battle City TypeScript
 
-Simplified version of the NES "Battle City" built on plain JS  
-Play at https://baterson.github.io/battle-city-typescript/
+This is a simplified version of the classic NES game "Battle City", implemented in plain JavaScript.
 
-Controls:  
- movement - arrows  
- shot - Space
+## Play Online
+
+You can try out the game online here: [Play Battle City](https://baterson.github.io/battle-city-typescript/)
+
+## Controls
+
+- Movement: Arrow keys
+- Shoot: Spacebar
+
+## Contribution
+
+If you have ideas for improvement or want to contribute to the project, feel free to fork the repository and submit pull requests!
+
+
+ 

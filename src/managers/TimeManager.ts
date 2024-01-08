@@ -1,5 +1,5 @@
 /*
-Store time in frames by the specified keys
+Stores time in frames by the specified keys
 */
 export class TimeManager<T extends string = any> {
 	timers: { [key in T]?: number } = {};
