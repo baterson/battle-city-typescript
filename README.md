@@ -1,6 +1,6 @@
 # Battle City TypeScript
 
-This is a simplified version of the classic NES game "Battle City", implemented in plain JavaScript.
+This is a simplified version of the classic NES game "Battle City", implemented in plain TypeScript.
 
 ## Play Online
 
