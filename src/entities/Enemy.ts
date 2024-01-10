@@ -15,7 +15,7 @@ function powerupObserver(this: Enemy, powerupType) {
 }
 
 /*
-Class describes all enemy tanks 
+Class describing all enemy tanks 
 */
 export class Enemy extends Tank {
 	type: TankTypes;
@@ -80,7 +80,7 @@ export class Enemy extends Tank {
 	}
 
 	/*
-	Entity changes the direction to random after moving some distance by the x or y coordinates 
+	Entity changes direction randomly after moving some distance along the x or y coordinates 
 	*/
 	aiMove() {
 		const { velocity } = ENEMY_STATS[this.type];

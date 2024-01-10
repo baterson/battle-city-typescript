@@ -15,7 +15,7 @@ export class Tank extends Movable {
 	}
 
 	/*
-	Set shotCD timer to the entity and creates the Bullet entity
+	Sets shotCD timer for the entity and creates the Bullet entity
 	*/
 	shot(cd: number) {
 		const shotCD = this.timeManager.getTimer('shotCD');
@@ -43,7 +43,7 @@ export class Tank extends Movable {
 	}
 
 	/*
-	Calculates position ot the entity and a tile. 
+	Calculates the position of the entity and a tile. 
 	If the difference between collisionPoints of entity and tile is the allowable size, the computes new position for the entity.
 	*/
 	forgiveCollision(tile: Tile): Vector | undefined {

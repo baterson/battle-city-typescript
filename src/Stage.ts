@@ -5,7 +5,7 @@ import { randomInt } from './utils';
 import { TileMap } from './TileMap';
 
 /*
-Represents a stage of the game with information of available enemies, powerups and map reference 
+Represents a stage of the game with information on available enemies, power-ups, and map reference 
 */
 export class Stage {
 	number: number;

@@ -26,7 +26,7 @@ function powerupObserver(this: Player, powerupType: PowerupTypes) {
 
 export class Player extends Tank {
 	lives: number;
-	// upgrades from powerups
+	// Upgrades from power-ups
 	power: PlayerPower;
 	timeManager: TimeManager<'spawn' | 'death' | 'invincible' | 'shotCD'>;
 	soundManager: SoundManager<'explode' | 'neutral' | 'move'>;
