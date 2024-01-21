@@ -1,6 +1,6 @@
 # Battle City TypeScript
 
-This is a simplified version of the classic NES game "Battle City", implemented in plain TypeScript.
+This is a version of the classic NES game "Battle City", implemented in plain TypeScript.
 
 ![chrome-capture-2024-1-2132-ezgif com-crop (1) (1)](https://github.com/baterson/battle-city-typescript/assets/13178757/1fe2780a-974c-476f-aac3-a2fc9368b5d2)
 
