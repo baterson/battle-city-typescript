@@ -13,6 +13,11 @@ Find online demo here: [Play Battle City](https://baterson.github.io/battle-city
 - **Movement**: Arrow keys
 - **Shoot**: Spacebar
 
+## Things that helped me during development
+
+- ["Game programming patterns" Book](https://gameprogrammingpatterns.com/)
+- ["Code Super Mario in JS" on Youtube](https://www.youtube.com/@meth-method/videos)
+
 ## Contribution
 
 Contributions are welcome! If you have suggestions for improvements or would like to contribute, please fork the repository and submit pull requests.
